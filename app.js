@@ -44,3 +44,4 @@ function setDuration(sec){if(![...$('duration').options].some(o=>+o.value===sec)
 try{setDuration(+localStorage.getItem('wl-duration'))}catch{}
 $('duration').addEventListener('change',e=>{setDuration(+e.target.value);try{localStorage.setItem('wl-duration',String(state.duration))}catch{}});
 renderMenu();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});

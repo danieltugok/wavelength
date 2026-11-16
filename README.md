@@ -24,6 +24,16 @@ Abra `index.html` em um navegador moderno. Se preferir servir via HTTP, dentro d
 - `styles.css`: aparência responsiva, contraste e espaçamentos.
 - `app.js`: cartas, temas, navegação, regras e cronômetro.
 - `favicon.svg`: ícone do site.
+- `manifest.webmanifest`, `sw.js`, `icons/`: PWA (instalar no celular e jogar offline).
+
+## Instalar como app (PWA)
+
+Precisa estar publicado em HTTPS (a Hostinger já fornece).
+
+- **Android (Chrome):** menu ⋮ → *Instalar app* / *Adicionar à tela inicial*.
+- **iPhone (Safari):** botão Compartilhar → *Adicionar à Tela de Início*.
+
+Depois de aberto uma vez, funciona sem internet. Com internet, sempre carrega a versão mais recente.
 
 ## Regras implementadas
 
@@ -33,7 +43,7 @@ Abra `index.html` em um navegador moderno. Se preferir servir via HTTP, dentro d
 - Se o cronômetro zerar, a rodada não pontua.
 - Nova rodada sorteia outra carta; menu principal encerra a rodada atual.
 - Cartas não se repetem até esgotar o baralho do tema; depois ele é embaralhado novamente.
-- Sem dependências, cookies, backend ou requisições de rede.
+- Sem dependências, cookies ou backend.
 
 ## Personalizar
 
