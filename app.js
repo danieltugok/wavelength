@@ -44,4 +44,18 @@ function setDuration(sec){if(![...$('duration').options].some(o=>+o.value===sec)
 try{setDuration(+localStorage.getItem('wl-duration'))}catch{}
 $('duration').addEventListener('change',e=>{setDuration(+e.target.value);try{localStorage.setItem('wl-duration',String(state.duration))}catch{}});
 renderMenu();
+// Install prompt: Chrome/Android gives a real install event; iOS has no API, so we show the manual steps.
+let installPrompt=null;
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+function isInstalled(){return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true}
+function canInstall(){return !isInstalled()&&(installPrompt!==null||isIOS)}
+function refreshInstall(){$('install-link').classList.toggle('hidden',!canInstall())}
+function openInstall(){if(!canInstall()||$('install').open)return;const native=installPrompt!==null;$('install-ios').classList.toggle('hidden',native);$('install-go').classList.toggle('hidden',!native);$('install-later').textContent=native?'Agora não':'Entendi';$('install').showModal()}
+function autoOpenInstall(){let seen=false;try{seen=localStorage.getItem('wl-install-seen')==='1'}catch{}if(seen||$('menu').classList.contains('hidden'))return;openInstall();try{localStorage.setItem('wl-install-seen','1')}catch{}}
+$('install-later').addEventListener('click',()=>$('install').close());
+$('install-link').addEventListener('click',openInstall);
+$('install-go').addEventListener('click',()=>{const p=installPrompt;$('install').close();if(!p)return;installPrompt=null;p.prompt();refreshInstall()});
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;refreshInstall();autoOpenInstall()});
+window.addEventListener('appinstalled',()=>{installPrompt=null;refreshInstall();if($('install').open)$('install').close()});
+refreshInstall();if(isIOS)autoOpenInstall();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});

@@ -33,6 +33,8 @@ Precisa estar publicado em HTTPS (a Hostinger já fornece).
 - **Android (Chrome):** menu ⋮ → *Instalar app* / *Adicionar à tela inicial*.
 - **iPhone (Safari):** botão Compartilhar → *Adicionar à Tela de Início*.
 
+No primeiro acesso, o app mostra um aviso com o botão de instalar (Android) ou o passo a passo (iPhone); depois fica o link "Instalar como app" no menu.
+
 Depois de aberto uma vez, funciona sem internet. Com internet, sempre carrega a versão mais recente.
 
 ## Regras implementadas

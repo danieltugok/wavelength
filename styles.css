@@ -370,6 +370,48 @@ h2 {
   }
 }
 
+.link-btn {
+  background: none;
+  border: 0;
+  color: #b7a6ff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  padding: 10px;
+  min-height: 44px;
+}
+.install-dialog {
+  width: calc(100% - 32px);
+  max-width: 400px;
+  max-height: calc(100% - 32px);
+  background: #20273d;
+  color: #f8fafc;
+  border: 1px solid #37415c;
+  border-radius: 20px;
+  padding: 22px;
+  text-align: center;
+}
+.install-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.install-dialog::backdrop {
+  background: rgba(5, 8, 20, 0.75);
+}
+.install-dialog img {
+  border-radius: 16px;
+}
+.install-steps {
+  align-self: stretch;
+  margin: 0;
+  padding-left: 22px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 /* Phone held sideways: two columns so everything fits without scrolling. */
 @media (orientation: landscape) and (max-height: 520px) {
   .app {
@@ -430,6 +472,18 @@ h2 {
   }
   .footnote {
     grid-area: note;
+  }
+  .link-btn {
+    min-height: 0;
+    padding: 4px;
+  }
+  .install-dialog {
+    padding: 14px 18px;
+    gap: 8px;
+  }
+  .install-dialog img {
+    width: 44px;
+    height: 44px;
   }
 
   /* Theme picker */
