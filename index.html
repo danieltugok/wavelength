@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101426">
+  <meta name="description" content="Baralho digital de festa inspirado em Wavelength, com cinco temas e cronômetro de cinco minutos.">
+  <title>Wavelength — Edição de Festa</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<main class="app">
+  <section id="menu" class="screen" aria-label="Menu principal">
+    <header class="welcome"><div class="logo" aria-hidden="true">〰️</div><h1>Wavelength</h1><p class="muted">Seu baralho digital para jogar em grupo</p></header>
+    <div class="panel theme-summary"><div class="eyebrow">TEMA DA PARTIDA</div><div class="selected-theme"><span id="selected-icon" class="big-emoji">🎯</span><div><h2 id="selected-name">Clássico</h2><p id="selected-desc" class="muted">De tudo um pouco</p></div></div><button id="choose" class="btn btn-outline">Escolher outro tema</button></div>
+    <button id="play" class="btn btn-primary btn-large">Começar partida <span aria-hidden="true">→</span></button>
+    <p class="footnote">5 minutos por rodada · Uma troca de carta</p>
+  </section>
+  <section id="themes" class="screen hidden" aria-label="Escolher tema">
+    <div class="themes-header"><button id="theme-back" class="btn btn-subtle back-button" aria-label="Voltar ao menu">←</button><div><h2>Escolha o tema</h2><p class="muted">Cada tema tem seu próprio baralho</p></div></div>
+    <div id="theme-list" class="theme-list"></div>
+  </section>
+  <section id="game" class="screen hidden" aria-label="Jogo">
+    <header class="game-header"><div><div class="eyebrow">WAVELENGTH</div><h2 id="game-theme"></h2></div><div class="pill" id="round">Rodada 1</div></header>
+    <div class="timer-panel" role="timer" aria-label="Tempo restante"><div class="eyebrow" id="clock-label">AGUARDANDO INÍCIO</div><div id="clock" class="timer-number">05:00</div><div class="track"><div id="progress" class="track-fill"></div></div></div>
+    <div><div class="card-heading">A carta desta rodada</div><div class="pair"><div class="pole pole-left"><div class="pole-label">← ESQUERDA</div><strong class="pole-word" id="left"></strong><div class="pole-arrow" aria-hidden="true">←</div></div><div class="pole pole-right"><div class="pole-label">DIREITA →</div><strong class="pole-word" id="right"></strong><div class="pole-arrow" aria-hidden="true">→</div></div></div></div>
+    <div id="select-controls" class="controls"><p id="select-hint" class="muted center">Gostou da carta? Inicie quando estiver pronto.</p><div class="choice-row"><button id="skip" class="btn btn-outline">↻ Outra carta</button><button id="undo" class="btn btn-outline">↶ Voltar</button></div><button id="start" class="btn btn-green btn-large">▶ Iniciar cronômetro</button></div>
+    <div id="running-controls" class="hidden"><button id="finish" class="btn btn-green btn-large">✓ Concluir rodada</button></div>
+    <div id="result" class="hidden" role="status"></div>
+    <div class="divider"></div>
+    <button id="next" class="btn btn-primary">Nova rodada →</button>
+    <button id="home" class="btn btn-subtle">⌂ Menu principal</button>
+  </section>
+</main>
+</body>
+</html>
