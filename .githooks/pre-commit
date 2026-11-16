@@ -1,0 +1,18 @@
+#!/bin/sh
+# Bumps the patch version shown on the menu (index.html, id="app-version") on every commit.
+# If you changed the version yourself in this commit (e.g. to 1.1.0), it is left as is.
+set -e
+f=index.html
+re='id="app-version">\([0-9]*\.[0-9]*\.[0-9]*\)<'
+staged=$(git show ":$f" 2>/dev/null | sed -n "s/.*$re.*/\1/p")
+[ -n "$staged" ] || exit 0
+head=$(git show "HEAD:$f" 2>/dev/null | sed -n "s/.*$re.*/\1/p")
+[ "$staged" = "$head" ] || exit 0
+
+next=$(echo "$staged" | awk -F. '{print $1"."$2"."$3+1}')
+swap="s/id=\"app-version\">$staged</id=\"app-version\">$next</"
+# Edit the staged copy directly so unstaged edits to index.html never sneak into the commit.
+blob=$(git show ":$f" | sed "$swap" | git hash-object -w --stdin)
+git update-index --cacheinfo "100644,$blob,$f"
+sed -i "$swap" "$f"
+echo "version: $staged -> $next"

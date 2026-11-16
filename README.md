@@ -18,6 +18,16 @@ Site estático responsivo, em português, inspirado na dinâmica do jogo Wavelen
 
 Abra `index.html` em um navegador moderno. Se preferir servir via HTTP, dentro da pasta execute `python3 -m http.server 8000` e acesse `http://localhost:8000`.
 
+## Versão
+
+A versão aparece no rodapé do menu (`id="app-version"` em `index.html`) e sobe sozinha a cada commit (1.0.0 → 1.0.1…) por um hook do Git. Depois de clonar, ative uma vez:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+Para mudar a versão maior (ex.: 1.1.0 ou 2.0.0), edite o número em `index.html` e faça o commit; o hook mantém o valor que você escolheu. Commits feitos pelo site do GitHub não passam pelo hook.
+
 ## Arquivos
 
 - `index.html`: estrutura e metadados.

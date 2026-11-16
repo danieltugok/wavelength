@@ -370,6 +370,11 @@ h2 {
   }
 }
 
+.version {
+  font-size: 11px;
+  color: #7f8aa6;
+  font-variant-numeric: tabular-nums;
+}
 .link-btn {
   background: none;
   border: 0;
