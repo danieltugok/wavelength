@@ -29,7 +29,7 @@ Abra `index.html` em um navegador moderno. Se preferir servir via HTTP, dentro d
 
 - Cinco temas, com cartas em português.
 - Uma troca por rodada, com possibilidade de voltar à primeira carta.
-- Cronômetro de 5 minutos iniciado manualmente depois da escolha da carta.
+- Cronômetro configurável (1 a 10 minutos, padrão 5) no menu principal, salvo no aparelho, iniciado manualmente depois da escolha da carta.
 - Se o cronômetro zerar, a rodada não pontua.
 - Nova rodada sorteia outra carta; menu principal encerra a rodada atual.
 - Cartas não se repetem até esgotar o baralho do tema; depois ele é embaralhado novamente.
